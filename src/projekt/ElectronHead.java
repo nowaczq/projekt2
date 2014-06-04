@@ -6,8 +6,6 @@
 
 package projekt;
 
-import java.awt.Color;
-import java.awt.Graphics;
 
 /**
  *
@@ -18,7 +16,7 @@ public class ElectronHead implements State {
 
     @Override
     public State nextState(int x, int y, TableBoard board) {
-        return ElectronTail;
+        return new ElectronTail();
     }
 
 }

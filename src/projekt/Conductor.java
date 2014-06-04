@@ -6,8 +6,6 @@
 
 package projekt;
 
-import java.awt.Color;
-import java.awt.Graphics;
 
 /**
  *
@@ -18,8 +16,8 @@ public class Conductor implements State {
     @Override
     public State nextState(int x, int y, TableBoard board) {
         int counter = board.neighboursCounter(x, y);
-        if(counter == 1 || counter == 2) return ElectronHead;
-        else return Conductor;
+        if(counter == 1 || counter == 2) return new ElectronHead();
+        else return new Conductor();
     }
     
 }

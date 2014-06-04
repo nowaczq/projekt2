@@ -10,10 +10,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import static projekt.State.Conductor;
-import static projekt.State.Insulator;
-import static projekt.State.ElectronHead;
-import static projekt.State.ElectronTail;
+
 
 
 
@@ -26,7 +23,6 @@ public class IoRead {
     BufferedReader br;
     String line;
     String inFile;
-    //tableBoard t = new tableBoard();
     int copyOFboarfTable[][] = new int [50][50];
     StateClass state= new StateClass();
     
@@ -50,13 +46,13 @@ public class IoRead {
                         {
                             switch (cellState)
                             {
-                                 case 0: t.setCell(y,x,Insulator);
+                                 case 0: t.setCell(y,x,new Insulator());
                                  break;
-                                 case 1: t.setCell(y,x,ElectronHead);
+                                 case 1: t.setCell(y,x,new ElectronHead());
                                  break;
-                                 case 3: t.setCell(y,x,ElectronTail);
+                                 case 3: t.setCell(y,x,new ElectronTail());
                                  break;
-                                 case 4: t.setCell(y,x,Conductor);;
+                                 case 4: t.setCell(y,x,new Conductor());
                                  break;
                             }
                         }                     

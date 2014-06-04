@@ -19,7 +19,7 @@ public class Insulator implements State {
     @Override
     public State nextState(int x, int y, TableBoard board) 
     {
-            return Insulator;
+            return new Insulator();
     }
 
 

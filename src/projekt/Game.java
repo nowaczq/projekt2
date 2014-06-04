@@ -43,12 +43,10 @@ public class Game implements Subject{
     {
         TableBoard board2 = new TableBoard ();
         board2.clearTable();
-        StateClass state = new StateClass();
         for(int j=0; j < 50 ; j++)
             for(int k=0; k < 50 ; k++)
             {
-                state.setState(board.getCell(j,k));
-                board2.setCell(j,k,state.nextState(j,k, board) );
+                board2.setCell(j,k,board.getCell(j,k).nextState(j,k, board) );
             }
         for (int i = 0; i<50;i++)
         {

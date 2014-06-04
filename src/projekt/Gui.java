@@ -233,15 +233,15 @@ public class Gui extends JFrame implements ActionListener,ItemListener{
         }
         if(c == startButton[3])
         {
-            table.setCell(X, Y, State.Conductor);
+            table.setCell(X, Y, new Conductor());
         }
         if(c == startButton[4])
         {
-            table.setCell(X, Y, State.ElectronHead);
+            table.setCell(X, Y, new ElectronHead());
         }
         if(c == startButton[5])
         {
-            table.setCell(X, Y, State.ElectronTail);
+            table.setCell(X, Y, new ElectronTail());
         }       
     }
 
