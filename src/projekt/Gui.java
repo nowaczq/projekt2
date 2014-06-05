@@ -20,8 +20,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class Gui extends JFrame implements ActionListener,ItemListener{
-    JButton startButton[];
+public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
+    JButton[] tableOfButtons;
     int numberOfIterations = 1000000;
     int speed = 1000;
     JFileChooser fileChoose;
@@ -30,8 +30,7 @@ public class Gui extends JFrame implements ActionListener,ItemListener{
     JMenuItem exit = new JMenuItem("Zamknij grę");
     JMenuItem fileChooser = new JMenuItem("Wczytaj plik");
     JMenuItem help = new JMenuItem("Pomoc");
-    JLabel inputLabel[];
-    JTextField inputFile[];
+    JLabel[] tableOfLabels;
     Choice xDimm;
     Choice yDimm;
     boolean change = false;
@@ -49,9 +48,8 @@ public class Gui extends JFrame implements ActionListener,ItemListener{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         tab = new JButton [50][50];
-        startButton = new JButton[10];
-        inputLabel = new JLabel[10];
-        inputFile = new JTextField[10];
+        tableOfButtons = new JButton[10];
+        tableOfLabels = new JLabel[10];
         setJMenuBar(getJMenuBar());
         choiceMenu();
         setLayout(null);
@@ -61,59 +59,85 @@ public class Gui extends JFrame implements ActionListener,ItemListener{
 
         
         
-        startButton[1]= new JButton("Start");
-        startButton[1].setBounds(800,3,180,30);
-        startButton[1].setBackground(Color.green);
-        startButton[1].setBorder(null);
-        startButton[1].addActionListener(this);
-        startButton[1].setFocusPainted(false);
-        add(startButton[1]);
-        inputLabel[2] = new JLabel("Szybkość");
-        inputLabel[2].setBounds(800,70,180,30);
-        add(inputLabel[2]);
-        inputLabel[3] = new JLabel("X");
-        inputLabel[3].setBounds(800,130,50,20);
-        add(inputLabel[3]);
-        inputLabel[4] = new JLabel("Y");
-        inputLabel[4].setBounds(850,130,50,20);
-        add(inputLabel[4]);
-        startButton[2]= new JButton("Stop");
-        startButton[2].setBounds(800,36,180,30);
-        startButton[2].setBackground(Color.green);
-        startButton[2].setBorder(null);
-        startButton[2].addActionListener(this);
-        startButton[2].setFocusPainted(false);
-        add(startButton[2]);
-        startButton[3]= new JButton("Przewodnik");
-        startButton[3].setBounds(800,200,180,30);
-        startButton[3].setBackground(Color.yellow);
-        startButton[3].setBorder(null);
-        startButton[3].addActionListener(this);
-        startButton[3].setFocusPainted(false);
-        add(startButton[3]);
-        startButton[4]= new JButton("Głowa elektronu");
-        startButton[4].setBounds(800,240,180,30);
-        startButton[4].setBackground(Color.red);
-        startButton[4].setBorder(null);
-        startButton[4].addActionListener(this);
-        startButton[4].setFocusPainted(false);
-        add(startButton[4]);
-        startButton[5]= new JButton("Ogon elektronu");
-        startButton[5].setBounds(800,280,180,30);
-        startButton[5].setBackground(Color.blue);
-        startButton[5].setBorder(null);
-        startButton[5].addActionListener(this);
-        startButton[5].setFocusPainted(false);
-        add(startButton[5]);
-        
-        
+        tableOfButtons[1]= new JButton("Start");
+        tableOfButtons[1].setBounds(800,3,180,30);
+        tableOfButtons[1].setBackground(Color.green);
+        tableOfButtons[1].setBorder(null);
+        tableOfButtons[1].addActionListener(this);
+        tableOfButtons[1].setFocusPainted(false);
+        add(tableOfButtons[1]);
+        tableOfLabels[2] = new JLabel("Szybkość w ms");
+        tableOfLabels[2].setBounds(800,70,180,30);
+        add(tableOfLabels[2]);
+        tableOfLabels[3] = new JLabel("X");
+        tableOfLabels[3].setBounds(800,130,50,20);
+        add(tableOfLabels[3]);
+        tableOfLabels[4] = new JLabel("Y");
+        tableOfLabels[4].setBounds(850,130,50,20);
+        add(tableOfLabels[4]);
+        tableOfButtons[2]= new JButton("Stop");
+        tableOfButtons[2].setBounds(800,36,180,30);
+        tableOfButtons[2].setBackground(Color.green);
+        tableOfButtons[2].setBorder(null);
+        tableOfButtons[2].addActionListener(this);
+        tableOfButtons[2].setFocusPainted(false);
+        add(tableOfButtons[2]);
+        tableOfButtons[3]= new JButton("Przewodnik");
+        tableOfButtons[3].setBounds(800,200,180,30);
+        tableOfButtons[3].setBackground(Color.yellow);
+        tableOfButtons[3].setBorder(null);
+        tableOfButtons[3].addActionListener(this);
+        tableOfButtons[3].setFocusPainted(false);
+        add(tableOfButtons[3]);
+        tableOfButtons[4]= new JButton("Głowa elektronu");
+        tableOfButtons[4].setBounds(800,240,180,30);
+        tableOfButtons[4].setBackground(Color.red);
+        tableOfButtons[4].setBorder(null);
+        tableOfButtons[4].addActionListener(this);
+        tableOfButtons[4].setFocusPainted(false);
+        add(tableOfButtons[4]);
+        tableOfButtons[5]= new JButton("Ogon elektronu");
+        tableOfButtons[5].setBounds(800,280,180,30);
+        tableOfButtons[5].setBackground(Color.blue);
+        tableOfButtons[5].setBorder(null);
+        tableOfButtons[5].addActionListener(this);
+        tableOfButtons[5].setFocusPainted(false);
+        add(tableOfButtons[5]);
+        tableOfButtons[6]= new JButton("Dioda");
+        tableOfButtons[6].setBounds(800,440,180,30);
+        tableOfButtons[6].setBackground(Color.yellow);
+        tableOfButtons[6].setBorder(null);
+        tableOfButtons[6].addActionListener(this);
+        tableOfButtons[6].setFocusPainted(false);
+        add(tableOfButtons[6]);
+        tableOfButtons[7]= new JButton("Dioda odwrócona");
+        tableOfButtons[7].setBounds(800,400,180,30);
+        tableOfButtons[7].setBackground(Color.yellow);
+        tableOfButtons[7].setBorder(null);
+        tableOfButtons[7].addActionListener(this);
+        tableOfButtons[7].setFocusPainted(false);
+        add(tableOfButtons[7]);
+        tableOfButtons[8]= new JButton("Pusta");
+        tableOfButtons[8].setBounds(800,320,180,30);
+        tableOfButtons[8].setBackground(Color.gray);
+        tableOfButtons[8].setBorder(null);
+        tableOfButtons[8].addActionListener(this);
+        tableOfButtons[8].setFocusPainted(false);
+        add(tableOfButtons[8]);
+        tableOfButtons[9]= new JButton("Wyczyść planszę");
+        tableOfButtons[9].setBounds(800,360,180,30);
+        tableOfButtons[9].setBackground(Color.gray);
+        tableOfButtons[9].setBorder(null);
+        tableOfButtons[9].addActionListener(this);
+        tableOfButtons[9].setFocusPainted(false);
+        add(tableOfButtons[9]);
         for (int r =0; r<50;r++)
            for(int q=0;q<50;q++)
            { 
                tab[r][q] =new JButton();
                add(tab[r][q]);
                tab[r][q].setBounds(r*15,q*15,15,15);
-               tab[r][q].setBorder(null);
+               //tab[r][q].setBorder(null);
                tab[r][q].setBackground(Color.black);
           }
           
@@ -184,7 +208,7 @@ public class Gui extends JFrame implements ActionListener,ItemListener{
                 }
             }
             if (change == true)
-                game.game(table);
+                game.wireworldGame(table);
             TimeUnit.MILLISECONDS.sleep(speed);
         }
     }
@@ -223,26 +247,66 @@ public class Gui extends JFrame implements ActionListener,ItemListener{
         {
             JOptionPane.showMessageDialog(this,"Tu będzie pomoc");
         }
-        if(c == startButton[1])
+        if(c == tableOfButtons[1])
         {
             change = true;
         }
-        if(c == startButton[2])
+        if(c == tableOfButtons[2])
         {
             change =false;
         }
-        if(c == startButton[3])
+        if(c == tableOfButtons[3])
         {
             table.setCell(X, Y, new Conductor());
         }
-        if(c == startButton[4])
+        if(c == tableOfButtons[4])
         {
             table.setCell(X, Y, new ElectronHead());
         }
-        if(c == startButton[5])
+        if(c == tableOfButtons[5])
         {
             table.setCell(X, Y, new ElectronTail());
-        }       
+        }
+        if(c == tableOfButtons[6])
+        {
+            if(X == 0 || Y == 0 || X == 49 || Y == 48)
+                JOptionPane.showMessageDialog(this,"W tych koordynatach nie można wstawić obiektu");
+            else
+            {
+                table.setCell(X, Y, new Conductor());
+                table.setCell(X+1, Y, new Conductor());
+                table.setCell(X+1, Y-1, new Conductor());
+                table.setCell(X+1, Y+1, new Conductor());
+                table.setCell(X+2, Y-1, new Conductor());
+                table.setCell(X+2, Y+1, new Conductor());
+                table.setCell(X+3, Y, new Conductor());
+            }
+        }
+        if(c == tableOfButtons[7])
+        {
+            if(X == 0 || Y == 0 || X == 49 || Y == 48)
+                JOptionPane.showMessageDialog(this,"W tych koordynatach nie można wstawić obiektu");
+            else
+            {
+                table.setCell(X, Y, new Conductor());
+                table.setCell(X+1, Y-1, new Conductor());
+                table.setCell(X+1, Y+1, new Conductor());
+                table.setCell(X+2, Y-1, new Conductor());
+                table.setCell(X+2, Y, new Conductor());
+                table.setCell(X+2, Y+1, new Conductor());
+                table.setCell(X+3, Y, new Conductor());
+            }
+        }
+        if(c == tableOfButtons[8])
+        {
+            table.setCell(X, Y, new Insulator());
+        }
+        if(c == tableOfButtons[9])
+        {
+            for (int i=0;i<50;i++)
+                for (int j=0;j<50;j++)
+                    table.setCell(i, j, new Insulator());
+        }
     }
 
     @Override
@@ -302,6 +366,11 @@ public class Gui extends JFrame implements ActionListener,ItemListener{
             case 44: Y=44;break;case 45: Y=45;break;case 46: Y=46;break;case 47: Y=47;break;
             case 48: Y=48;break;case 49: Y=49;break;
         }
+    }
+
+    @Override
+    public void update(TableBoard s) {
+        
     }
 
 

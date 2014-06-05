@@ -39,7 +39,7 @@ public class Game implements Subject{
                 o.update(table);
         }
     }
-    public void game(TableBoard board)
+    public void wireworldGame(TableBoard board)
     {
         TableBoard board2 = new TableBoard ();
         board2.clearTable();
