@@ -9,7 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.FileNotFoundException;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -29,6 +32,7 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
     JMenu optionsMenu = new JMenu("Opcje");
     JMenuItem exit = new JMenuItem("Zamknij grę");
     JMenuItem fileChooser = new JMenuItem("Wczytaj plik");
+    JMenuItem saveFile = new JMenuItem("Zapisz plik");
     JMenuItem help = new JMenuItem("Pomoc");
     JLabel[] tableOfLabels;
     Choice xDimm;
@@ -219,8 +223,10 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
         menuBar.setBackground(Color.green);
         menuBar.setBorder(null);
         optionsMenu.add(fileChooser);
+        optionsMenu.add(saveFile);
         optionsMenu.add(help);
         optionsMenu.add(exit);
+        saveFile.addActionListener(this);
         exit.addActionListener(this);
         fileChooser.addActionListener(this);
         help.addActionListener(this);
@@ -306,6 +312,21 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
             for (int i=0;i<50;i++)
                 for (int j=0;j<50;j++)
                     table.setCell(i, j, new Insulator());
+        }
+        if(c == saveFile)
+        {
+            FileDialog fd =new FileDialog(this,"Zapisz",FileDialog.SAVE);
+            fd.setVisible(true);
+            String directoryInput=fd.getDirectory();
+            String fileInput=fd.getFile();
+            //table.clearTable();
+            read.outFile = directoryInput+fileInput;
+            System.out.println(read.outFile);
+            try {   
+                read.saveFile(table);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Gui.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 

@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 
 
@@ -23,10 +24,10 @@ public class IoRead {
     BufferedReader br;
     String line;
     String inFile;
+    String outFile;
     int copyOFboarfTable[][] = new int [50][50];
-    StateClass state= new StateClass();
     
-    public StateClass[][] readFile (TableBoard t) 
+    public void readFile (TableBoard t) 
     {
         try 
         {
@@ -63,6 +64,23 @@ public class IoRead {
         }
         catch (IOException e){      
         }
-        return t.board;
     }
+    public void saveFile(TableBoard t) throws FileNotFoundException
+    {
+      PrintWriter outputFile = new PrintWriter(this.outFile);
+      for(int i = 0; i < 50; i++)
+      {
+          for(int j = 0; j < 50; j++)
+          {
+              if(t.getCell(j, i).getClass().equals(t.electronHead.getClass()))
+                  outputFile.println(i + " " + j + " " + 1 );
+              if(t.getCell(j, i).getClass().equals(t.electronTail.getClass()))
+                  outputFile.println(i + " " + j + " " + 3 );
+              if(t.getCell(j, i).getClass().equals(t.Conductor.getClass()))
+                  outputFile.println(i + " " + j + " " + 4 );
+          }
+      }    
+      outputFile.close();
+    }
+    
 }
