@@ -11,7 +11,5 @@ package projekt;
  * @author Mateusz
  */
 public interface State {
-    
-    
     State nextState (int x, int y, TableBoard board);
 }

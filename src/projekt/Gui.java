@@ -279,13 +279,7 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
                 JOptionPane.showMessageDialog(this,"W tych koordynatach nie można wstawić obiektu");
             else
             {
-                table.setCell(X, Y, new Conductor());
-                table.setCell(X+1, Y, new Conductor());
-                table.setCell(X+1, Y-1, new Conductor());
-                table.setCell(X+1, Y+1, new Conductor());
-                table.setCell(X+2, Y-1, new Conductor());
-                table.setCell(X+2, Y+1, new Conductor());
-                table.setCell(X+3, Y, new Conductor());
+               new Diode(X,Y,table);
             }
         }
         if(c == tableOfButtons[7])
@@ -294,13 +288,7 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
                 JOptionPane.showMessageDialog(this,"W tych koordynatach nie można wstawić obiektu");
             else
             {
-                table.setCell(X, Y, new Conductor());
-                table.setCell(X+1, Y-1, new Conductor());
-                table.setCell(X+1, Y+1, new Conductor());
-                table.setCell(X+2, Y-1, new Conductor());
-                table.setCell(X+2, Y, new Conductor());
-                table.setCell(X+2, Y+1, new Conductor());
-                table.setCell(X+3, Y, new Conductor());
+                new ReverseDiode(X,Y,table);
             }
         }
         if(c == tableOfButtons[8])
@@ -319,7 +307,6 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
             fd.setVisible(true);
             String directoryInput=fd.getDirectory();
             String fileInput=fd.getFile();
-            //table.clearTable();
             read.outFile = directoryInput+fileInput;
             System.out.println(read.outFile);
             try {   
