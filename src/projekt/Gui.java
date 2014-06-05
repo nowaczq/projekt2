@@ -21,7 +21,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
     JButton[] tableOfButtons;
@@ -251,7 +250,29 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
         }
         if(c == help)
         {
-            JOptionPane.showMessageDialog(this,"Tu będzie pomoc");
+            JOptionPane.showMessageDialog(this,"WireWorld\nProgram symuluje działanie algorytmu "
+                    + "Wireworld.\nProgram pozwala na wczytanie pliku z danymi w formacie .txt\n"
+                    + "Opcje->Wczytaj.\n"
+                    + "Pozwala również na zapis dowolnej generacji do pliku .txt\n"
+                    + "Opcje->Zapisz.\n\n"
+                    + "Obsługa:\n"
+                    + "Program na początku pokazuje czarną planszę.\n"
+                    + "Aby rozpocząć symulację można:\n"
+                    + "a) wczytać odpowiedni plik tekstowy\n"
+                    + "b) samodzielnie ułożyć planszę za pomocą konstruktora.\n"
+                    + "Działanie programu można w każdej chwili zatrzymać\n"
+                    + "przyciskiem STOP, jak również wznowić przyciskiem START.\n\n"
+                    + "Wstawianie elementów:\n"
+                    + "Aby wstawić element należy wybrać interesujące\n"
+                    + "nas współrzędne z menu rozsuwanych X i Y\n"
+                    + "po czym wybrać odpowiedni element i kliknąć\n"
+                    + "odpowieni przycisk\n\n"
+                    + "Możliwe szybkości wykonywania algorytmu w milisekunach:\n"
+                    + "50,100,200,500,1000(1s)\n\n"
+                    + "W razie problemów należy się skontaktować z twórcą oprogramowania\n"
+                    + "adres e-mail: nowaczq@gmail.com\n\n"
+                    + "Adres repozytorium Github:\n"
+                    + "https://github.com/nowaczq/projekt2\n");
         }
         if(c == tableOfButtons[1])
         {
