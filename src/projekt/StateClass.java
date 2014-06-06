@@ -3,39 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package projekt;
 
 /**
  *
  * @author Mateusz
  */
-public class StateClass implements State {
-     
+public class StateClass implements State
+{
     private State cellState;
-    public StateClass ()
+
+    public StateClass()
     {
-        
+
     }
-    public StateClass (State state)
+
+    public StateClass(State state)
     {
         cellState = state;
     }
-    
+
     public void setState(State state)
     {
         cellState = state;
     }
-    public State getState() 
+
+    public State getState()
     {
-       return cellState;
+        return cellState;
     }
-    
 
     @Override
-    public State nextState(int x, int y, TableBoard board) 
+    public State nextState(int x, int y, TableBoard board)
     {
         return cellState.nextState(x, y, board);
     }
-    
+
 }

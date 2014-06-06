@@ -22,7 +22,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
+public class Gui extends JFrame implements ActionListener,ItemListener,Observer
+{
     JButton[] tableOfButtons;
     int numberOfIterations = 1000000;
     int speed = 1000;
@@ -51,7 +52,7 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         tab = new JButton [50][50];
-        tableOfButtons = new JButton[10];
+        tableOfButtons = new JButton[20];
         tableOfLabels = new JLabel[10];
         setJMenuBar(getJMenuBar());
         choiceMenu();
@@ -134,12 +135,33 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
         tableOfButtons[9].addActionListener(this);
         tableOfButtons[9].setFocusPainted(false);
         add(tableOfButtons[9]);
+        tableOfButtons[10]= new JButton("Bramka OR");
+        tableOfButtons[10].setBounds(800,480,180,30);
+        tableOfButtons[10].setBackground(Color.yellow);
+        tableOfButtons[10].setBorder(null);
+        tableOfButtons[10].addActionListener(this);
+        tableOfButtons[10].setFocusPainted(false);
+        add(tableOfButtons[10]);
+        tableOfButtons[11]= new JButton("Bramka AndNot");
+        tableOfButtons[11].setBounds(800,520,180,30);
+        tableOfButtons[11].setBackground(Color.yellow);
+        tableOfButtons[11].setBorder(null);
+        tableOfButtons[11].addActionListener(this);
+        tableOfButtons[11].setFocusPainted(false);
+        add(tableOfButtons[11]);
+        tableOfButtons[12]= new JButton("Bramka Xor");
+        tableOfButtons[12].setBounds(800,560,180,30);
+        tableOfButtons[12].setBackground(Color.yellow);
+        tableOfButtons[12].setBorder(null);
+        tableOfButtons[12].addActionListener(this);
+        tableOfButtons[12].setFocusPainted(false);
+        add(tableOfButtons[12]);
         for (int r =0; r<50;r++)
            for(int q=0;q<50;q++)
            { 
                tab[r][q] =new JButton();
                add(tab[r][q]);
-               tab[r][q].setBounds(r*15,q*15,15,15);
+               tab[r][q].setBounds(r*13,q*13,13,13);
                //tab[r][q].setBorder(null);
                tab[r][q].setBackground(Color.black);
           }
@@ -186,8 +208,6 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
             {
                 for (int j =0; j<50;j++)
                 {
-                    
-                    tab[i][j].setBounds(i*15,j*15,15,15);
                     if (table.getCell(i,j).getClass().equals(table.Insulator.getClass()))
                     {
                         tab[i][j].setBackground(Color.black);
@@ -265,11 +285,11 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
                     + "Wstawianie elementów:\n"
                     + "Aby wstawić element należy wybrać interesujące\n"
                     + "nas współrzędne z menu rozsuwanych X i Y\n"
-                    + "po czym wybrać odpowiedni element i kliknąć\n"
-                    + "odpowieni przycisk\n\n"
+                    + "po czym wybrać element i kliknąć"
+                    + "jego przycisk\n\n"
                     + "Możliwe szybkości wykonywania algorytmu w milisekunach:\n"
                     + "50,100,200,500,1000(1s)\n\n"
-                    + "W razie problemów należy się skontaktować z twórcą oprogramowania\n"
+                    + "W razie problemów należy się skontaktować z twórcą oprogramowania:\n"
                     + "adres e-mail: nowaczq@gmail.com\n\n"
                     + "Adres repozytorium Github:\n"
                     + "https://github.com/nowaczq/projekt2\n");
@@ -321,6 +341,33 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer{
             for (int i=0;i<50;i++)
                 for (int j=0;j<50;j++)
                     table.setCell(i, j, new Insulator());
+        }        
+        if(c == tableOfButtons[10])
+        {
+            if(X == 0 || Y == 0 || X == 49 || Y == 48)
+                JOptionPane.showMessageDialog(this,"W tych koordynatach nie można wstawić obiektu");
+            else
+            {
+                new OrGate(X,Y,table);
+            } 
+        }
+        if(c == tableOfButtons[11])
+        {
+            if(X == 0 || Y == 0 || X == 49 || Y == 48)
+                JOptionPane.showMessageDialog(this,"W tych koordynatach nie można wstawić obiektu");
+            else
+            {
+                new AndNotGate(X,Y,table);
+            } 
+        }
+        if(c == tableOfButtons[12])
+        {
+            if(X == 0 || Y == 0 || X == 49 || Y == 48)
+                JOptionPane.showMessageDialog(this,"W tych koordynatach nie można wstawić obiektu");
+            else
+            {
+                new XorGate(X,Y,table);
+            } 
         }
         if(c == saveFile)
         {

@@ -13,7 +13,8 @@ import java.util.List;
  *
  * @author Mateusz
  */
-public class Game implements Subject{
+public class Game implements Subject
+{
     private ArrayList<Observer> observers;
     private TableBoard table;
     
