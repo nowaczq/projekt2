@@ -344,7 +344,7 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer
         }        
         if(c == tableOfButtons[10])
         {
-            if(X == 0 || Y == 0 || X == 49 || Y == 48)
+            if(X == 0 || Y == 0 || X >46  || Y > 46)
                 JOptionPane.showMessageDialog(this,"W tych koordynatach nie można wstawić obiektu");
             else
             {
@@ -353,7 +353,7 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer
         }
         if(c == tableOfButtons[11])
         {
-            if(X == 0 || Y == 0 || X == 49 || Y == 48)
+            if(X == 0 || Y == 0 || X > 44 || Y > 46)
                 JOptionPane.showMessageDialog(this,"W tych koordynatach nie można wstawić obiektu");
             else
             {
@@ -362,7 +362,7 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer
         }
         if(c == tableOfButtons[12])
         {
-            if(X == 0 || Y == 0 || X == 49 || Y == 48)
+            if(X == 0 || Y == 0 || X > 42 || Y > 44)
                 JOptionPane.showMessageDialog(this,"W tych koordynatach nie można wstawić obiektu");
             else
             {
