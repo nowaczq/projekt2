@@ -41,7 +41,7 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer
     Choice list;
     int X=0;
     int Y=0;
-    Game game =new Game();
+    Wireworld game =new Wireworld();
     TableBoard table = new TableBoard();
     IoRead read = new IoRead();
     public Gui() throws InterruptedException
@@ -208,22 +208,22 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer
             {
                 for (int j =0; j<50;j++)
                 {
-                    if (table.getCell(i,j).getClass().equals(table.Insulator.getClass()))
+                    if (table.getCell(i,j).getClass().equals(new Insulator().getClass()))
                     {
                         tab[i][j].setBackground(Color.black);
                        
                     }
-                    if (table.getCell(i,j).getClass().equals(table.electronHead.getClass()))
+                    if (table.getCell(i,j).getClass().equals(new ElectronHead().getClass()))
                     {
                         tab[i][j].setBackground(Color.red);
                         
                     }
-                    if (table.getCell(i,j).getClass().equals(table.electronTail.getClass()))
+                    if (table.getCell(i,j).getClass().equals(new ElectronTail().getClass()))
                     {
                         tab[i][j].setBackground(Color.blue);
                        
                     }
-                    if (table.getCell(i,j).getClass().equals(table.Conductor.getClass()))
+                    if (table.getCell(i,j).getClass().equals(new Conductor().getClass()))
                     {
                         tab[i][j].setBackground(Color.yellow);
                        

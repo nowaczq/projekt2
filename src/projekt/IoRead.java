@@ -25,7 +25,7 @@ public class IoRead {
     String line;
     String inFile;
     String outFile;
-    int copyOFboarfTable[][] = new int [50][50];
+    //int copyOFboarfTable[][] = new int [50][50];
     
     public void readFile (TableBoard t) 
     {
@@ -72,11 +72,11 @@ public class IoRead {
       {
           for(int j = 0; j < 50; j++)
           {
-              if(t.getCell(j, i).getClass().equals(t.electronHead.getClass()))
+              if(t.getCell(j, i).getClass().equals(new ElectronHead().getClass()))
                   outputFile.println(i + " " + j + " " + 1 );
-              if(t.getCell(j, i).getClass().equals(t.electronTail.getClass()))
+              if(t.getCell(j, i).getClass().equals(new ElectronTail().getClass()))
                   outputFile.println(i + " " + j + " " + 3 );
-              if(t.getCell(j, i).getClass().equals(t.Conductor.getClass()))
+              if(t.getCell(j, i).getClass().equals(new Conductor().getClass()))
                   outputFile.println(i + " " + j + " " + 4 );
           }
       }    
