@@ -296,6 +296,7 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer
         if(c == tableOfButtons[1])
         {
             change = true;
+    
         }
         if(c == tableOfButtons[2])
         {
@@ -444,7 +445,8 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer
     }
 
     @Override
-    public void update(TableBoard s) {
+    public void update(TableBoard s) 
+    {
         
     }
 
