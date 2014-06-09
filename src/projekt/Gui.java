@@ -162,7 +162,6 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer
                tab[r][q] =new JButton();
                add(tab[r][q]);
                tab[r][q].setBounds(r*13,q*13,13,13);
-               //tab[r][q].setBorder(null);
                tab[r][q].setBackground(Color.black);
           }
           
