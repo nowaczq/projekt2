@@ -11,7 +11,7 @@ package projekt;
  * @author Mateusz
  */
 public class TableBoard {
-     StateClass board[][];
+    StateClass board[][];
     
     public  TableBoard ()
     {

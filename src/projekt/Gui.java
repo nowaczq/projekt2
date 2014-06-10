@@ -169,7 +169,7 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer
            System.out.println(numberOfIterations); 
         
     }
-    public void choiceMenu()
+    private void choiceMenu()
     {
         list = new Choice();
         list.setBackground(Color.white);
@@ -198,7 +198,7 @@ public class Gui extends JFrame implements ActionListener,ItemListener,Observer
         add(yDimm);
         yDimm.addItemListener(this);
     }
-    public void drawGame() throws InterruptedException
+    private void drawGame() throws InterruptedException
     {
               
         for (int k =0 ;k<numberOfIterations;k++)
